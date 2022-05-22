@@ -72,6 +72,7 @@ main{
     justify-content: flex-start;
     margin-bottom: 9px;
     border-radius: 5px;
+    padding: 5px;
 }
 
 .list-item:hover{
@@ -88,6 +89,7 @@ main{
 .img-descr{
     width: 30ch;
     font-size: medium;
+    white-space: nowrap;
 }
 
 .highlight{

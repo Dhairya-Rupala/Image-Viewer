@@ -104,3 +104,10 @@ window.addEventListener("keydown",function(event){
         display_image();
     }
 })
+
+
+// Greet Button event handler 
+const greet = document.getElementsByClassName("greet-toon")[0];
+greet.addEventListener("mouseover",function(event){
+    console.log(event);
+})

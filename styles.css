@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap');
+
 *{
     margin: 0px;
 }
@@ -29,7 +31,7 @@ main{
 .img-icon{
     height: 100%;
     width: 100%;
-    border-radius: 8%;
+    border-radius: 10px;
     object-fit: cover;
 }
 
@@ -40,7 +42,7 @@ main{
 }
 
 .display_image{
-    height: 85vh;
+    height: 80vh;
     object-fit: cover;
 }
 
@@ -49,11 +51,12 @@ main{
     width: 100%;
     object-fit: cover;
     margin-left: 9px;
-    border-radius: 2%;
+    border-radius: 10px;
 }
 
 .editable-caption{
     width: 100%;
+    margin-top: 9px;
     object-fit: cover;
 }
 
@@ -67,7 +70,14 @@ main{
 .list-item{
     display: flex;
     justify-content: flex-start;
-    margin-bottom: 7px;
+    margin-bottom: 9px;
+    border-radius: 5px;
+}
+
+.list-item:hover{
+    background-color: #F1EEE9;
+    cursor: pointer;
+    transition: 0.7s;
 }
 
 .img-descr-container{
@@ -77,8 +87,18 @@ main{
 
 .img-descr{
     width: 30ch;
+    font-size: medium;
 }
 
 .highlight{
     background-color: #30C5FF;
 } 
+
+.app-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-family: 'Comic Neue', cursive;
+    height: 10vh;
+}

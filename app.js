@@ -74,7 +74,7 @@ images.forEach((item,index)=>{
 
 
 // Event Listener for updating the editable caption with side bar content
-disp_caption.addEventListener('blur',function(event){
+disp_caption.addEventListener('input',function(event){
     let target = document.getElementById(default_img.toString());
     target = target.querySelector(".img-descr-container .img-descr");
     target.innerHTML = checkOverflow(this.innerHTML);

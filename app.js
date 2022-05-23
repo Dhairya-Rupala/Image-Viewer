@@ -7,6 +7,24 @@ const greet = document.getElementsByClassName("greet-toon")[0];
 var current_img = 0;
 var total_images = 0;
 
+(function makeHeading(){
+    let today = new Date();
+    let hrs = today.getHours();
+    let heading = "";
+    if(hrs<12){
+        heading = "Good Morning 🌤️, Welcome to my Image Viewer";
+    }
+    else if(hrs<18){
+        heading = "Good Afternoon 🌞, Welcome to my Image Viewer";
+    }
+    else{
+        heading = "Good Evening 🌳, Welcome to my Image Viewer";
+    }
+    const appHeading = document.getElementsByClassName("heading")[0];
+    appHeading.innerText = heading;
+})();
+
+
 
 // Handling the overflow
 function handleOverflow(caption){

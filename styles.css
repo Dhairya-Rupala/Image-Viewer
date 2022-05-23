@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue&family=Special+Elite&display=swap');
 
 
 /* 
@@ -32,6 +32,7 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 4px;
 }
 
 .container{
@@ -136,6 +137,7 @@ main{
     FOOTER SECTION 
 */
 .app-footer{
+    position: fixed;
     display: flex;
     align-items: center;
 }
@@ -150,7 +152,8 @@ main{
 
 .greet-toon:hover{
     transform: scale(1.1);
-    box-shadow: 6px 6px 5px #F9F3EE;
+    box-shadow: 6px 6px 5px darkgrey;
+    cursor: pointer;
 }
 
 .greet-message{
@@ -159,6 +162,7 @@ main{
 }
 
 .greet-message-display{
+    font-family: 'Special Elite', cursive;
     font-size: x-large;
     visibility: visible;
 }

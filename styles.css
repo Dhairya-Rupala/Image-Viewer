@@ -16,7 +16,11 @@
     font-family: 'Comic Neue', cursive;
     height: 10vh;
     text-shadow:darkgrey 2px 3px;
+}
 
+.heading{
+    flex-wrap: 1;
+    flex-shrink: 1;
 }
 
 
@@ -31,7 +35,7 @@ main{
 }
 
 .container{
-    margin-top: 20px;
+    margin-top: 1.5%;
     display: flex;
     justify-content: center;
     
@@ -41,14 +45,16 @@ main{
     width: 300px;
 }
 
+.list-item-container{
+    display: flex;
+}
+
 .list-item{
     display: flex;
     justify-content: flex-start;
-    margin-bottom: 9px;
-    margin-right : 6px;
     border-radius: 5px;
-    padding: 10px;
-    box-shadow: 6px 6px 5px #F9F3EE;
+    margin: 10px;
+    box-shadow: 7px 7px 4px #F9F3EE;
 }
 
 .list-item:hover{
@@ -58,6 +64,9 @@ main{
 }
 
 .img-icon-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 60px;
     width: 60px;
     flex-shrink: 0;
@@ -65,8 +74,8 @@ main{
 }
 
 .img-icon{
-    height: 100%;
-    width: 100%;
+    height: 90%;
+    width: 90%;
     border-radius: 10px;
     object-fit: cover;
 }
@@ -80,6 +89,7 @@ main{
     width: 30ch;
     font-size: medium;
     white-space: nowrap;
+    overflow:hidden;
 }
 
 .image-bar{
@@ -105,14 +115,16 @@ main{
     max-width: 100%;
     margin-top: 12px;
     object-fit: cover;
-    overflow-wrap: break-word;
 }
 
 .displayed-caption{
     margin-top: 3px;
+    max-width: 100%;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     font-size: large;
+    white-space: nowrap;
 }
 
 .highlight{

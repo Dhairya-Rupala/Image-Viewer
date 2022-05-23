@@ -10,8 +10,9 @@ var total_images = 0;
 
 // Handling the overflow
 function handleOverflow(caption){
+    caption = caption.replace(/[\\<div><br></div>]/gm,'');
     if(caption.length>30){
-        console.log(caption.substring(0,9) + "..." + caption.substring());
+        // console.log(caption.substring(0,9) + "..." + caption.substring());
         return caption.substring(0,12) + "..." + caption.substring(caption.length-15);
     }
     return caption;
@@ -78,6 +79,7 @@ images.forEach((img,index)=>{
 disp_caption.addEventListener('input',function(event){
     let target = document.getElementById(current_img.toString());
     target = target.querySelector(".img-descr-container .img-descr");
+    console.log(handleOverflow(this.innerHTML));
     target.innerHTML = handleOverflow(this.innerHTML);
 })
 

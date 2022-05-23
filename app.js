@@ -85,7 +85,7 @@ images.forEach((img,index)=>{
     }
     new_div.addEventListener("click",function(event){
         document.getElementById(current_img.toString()).classList.toggle('highlight');
-        current_img = index;
+        current_img = +new_div.getAttribute("id");
         document.getElementById(current_img.toString()).classList.toggle('highlight');
         displayImage();
     });
@@ -98,7 +98,7 @@ images.forEach((img,index)=>{
 disp_caption.addEventListener('input',function(event){
     let target = document.getElementById(current_img.toString());
     target = target.querySelector(".img-descr-container .img-descr");
-    console.log(handleOverflow(this.innerText));
+    // console.log(handleOverflow(this.innerText));
     target.innerHTML = handleOverflow(this.innerText);
 
     let edited_content = document.getElementsByClassName("displayed-caption")[0];
@@ -134,12 +134,12 @@ window.addEventListener("keydown",function(event){
 // Greet Button event handler 
 greet.addEventListener("mouseover",function(event){
     let msg = document.querySelector(".greet-message");
-    msg.classList.remove("greet-message");
+    msg.classList.toggle("greet-message");
     msg.classList.toggle("greet-message-display");
 }) 
 
 greet.addEventListener("mouseout",function(){
     let msg = document.querySelector(".greet-message-display");
-    msg.classList.add("greet-message");
+    msg.classList.toggle("greet-message");
     msg.classList.toggle("greet-message-display");
 })

@@ -7,6 +7,7 @@ const greet = document.getElementsByClassName("greet-toon")[0];
 var current_img = 0;
 var total_images = 0;
 
+// displaying the heading based on current time
 (function makeHeading(){
     let today = new Date();
     let hrs = today.getHours();
@@ -65,6 +66,8 @@ function displayImage(){
     img_disp.innerHTML = img_content;
     disp_caption.innerHTML = caption;
 }
+
+// Display first image on loading
 displayImage();
 
 

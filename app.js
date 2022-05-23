@@ -1,14 +1,15 @@
 import images from "./ImageData/imagedata.js";
 
 const img_list = document.querySelector(".list-container");
-const img_disp = document.querySelector(".display_image");
+const img_disp = document.querySelector(".display-image");
 const disp_caption = document.querySelector(".displayed-caption");
-var default_img = 0;
+const greet = document.getElementsByClassName("greet-toon")[0];
+var current_img = 0;
 var total_images = 0;
 
 
-// function for handling the overflow
-function checkOverflow(caption){
+// Handling the overflow
+function handleOverflow(caption){
     if(caption.length>30){
         console.log(caption.substring(0,9) + "..." + caption.substring());
         return caption.substring(0,12) + "..." + caption.substring(caption.length-15);
@@ -23,13 +24,13 @@ function checkOverflow(caption){
  * @param {image object} img 
  * @returns string content
  */
-function content_maker(img){
+function contentMaker(img){
     const content = `
         <div class="img-icon-container">
             <img class="img-icon" src=${img["previewImage"]} alt="Icon can't be loaded">
         </div>
         <div class="img-descr-container">
-            <span class="img-descr">${checkOverflow(img["title"])}</span>
+            <span class="img-descr">${handleOverflow(img["title"])}</span>
         </div>
     `;
     return content;
@@ -37,36 +38,36 @@ function content_maker(img){
 
 
 /**
- * For Displaying the selected image
+ * Displaying the selected current image
  */
-function display_image(){
+function displayImage(){
     const img_content = `
-        <img class="displayed-image" src=${images[default_img]["previewImage"]} alt=${images[default_img]["title"]}>
+        <img class="displayed-image" src=${images[current_img]["previewImage"]} alt=${images[current_img]["title"]}>
     `;
-    const caption = `${images[default_img]["title"]}`;
+    const caption = `${images[current_img]["title"]}`;
     img_disp.innerHTML = img_content;
     disp_caption.innerHTML = caption;
 }
-display_image();
+displayImage();
 
 
 /**
  * loading the sidebar for images list
  */
-images.forEach((item,index)=>{
+images.forEach((img,index)=>{
     const new_div = document.createElement("div");
     new_div.classList.add("list-item");
     new_div.setAttribute("id",index.toString());
-    const content = content_maker(item);
+    const content = contentMaker(img);
     new_div.innerHTML = content;
-    if(index==0){
+    if(index===0){
         new_div.classList.add("highlight");
     }
     new_div.addEventListener("click",function(event){
-        document.getElementById(default_img.toString()).classList.toggle('highlight');
-        default_img = index;
-        document.getElementById(default_img.toString()).classList.toggle('highlight');
-        display_image();
+        document.getElementById(current_img.toString()).classList.toggle('highlight');
+        current_img = index;
+        document.getElementById(current_img.toString()).classList.toggle('highlight');
+        displayImage();
     });
     img_list.append(new_div);
     total_images += 1;
@@ -75,9 +76,9 @@ images.forEach((item,index)=>{
 
 // Event Listener for updating the editable caption with side bar content
 disp_caption.addEventListener('input',function(event){
-    let target = document.getElementById(default_img.toString());
+    let target = document.getElementById(current_img.toString());
     target = target.querySelector(".img-descr-container .img-descr");
-    target.innerHTML = checkOverflow(this.innerHTML);
+    target.innerHTML = handleOverflow(this.innerHTML);
 })
 
 
@@ -88,26 +89,25 @@ window.addEventListener("keydown",function(event){
     // console.log(event);
     //toggling the highlight and changing the image based on the keypress
     if(event.key === "ArrowUp"){
-        let img_elmt = document.getElementById(default_img.toString());
+        let img_elmt = document.getElementById(current_img.toString());
         img_elmt.classList.toggle("highlight");
-        default_img = ((default_img-1)%total_images+total_images)%total_images;
-        img_elmt = document.getElementById(default_img.toString());
+        current_img = ((current_img-1)%total_images+total_images)%total_images;
+        img_elmt = document.getElementById(current_img.toString());
         img_elmt.classList.toggle("highlight");
-        display_image();
+        displayImage();
     }
     else if(event.key === "ArrowDown"){
-        let img_elmt = document.getElementById(default_img.toString());
+        let img_elmt = document.getElementById(current_img.toString());
         img_elmt.classList.toggle("highlight");
-        default_img = (default_img+1)%total_images;
-        img_elmt = document.getElementById(default_img.toString());
+        current_img = (current_img+1)%total_images;
+        img_elmt = document.getElementById(current_img.toString());
         img_elmt.classList.toggle("highlight");
-        display_image();
+        displayImage();
     }
 })
 
 
 // Greet Button event handler 
-const greet = document.getElementsByClassName("greet-toon")[0];
 greet.addEventListener("mouseover",function(event){
     let msg = document.querySelector(".greet-message");
     msg.classList.remove("greet-message");

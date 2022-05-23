@@ -1,9 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap');
 
+
+/* 
+    HEADER SECTION 
+*/
 *{
     margin: 0px;
 }
 
+.app-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-family: 'Comic Neue', cursive;
+    height: 10vh;
+    text-shadow:darkgrey 2px 3px;
+
+}
+
+
+
+/* 
+    MIDDLE SECTION     
+*/
 main{
     display: flex;
     justify-content: center;
@@ -21,6 +41,22 @@ main{
     width: 300px;
 }
 
+.list-item{
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 9px;
+    margin-right : 6px;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 6px 6px 5px #F9F3EE;
+}
+
+.list-item:hover{
+    background-color: #EFEAD8;
+    cursor: pointer;
+    transition: 0.7s;
+}
+
 .img-icon-container{
     height: 60px;
     width: 60px;
@@ -35,13 +71,23 @@ main{
     object-fit: cover;
 }
 
+.img-descr-container{
+    display: flex;
+    align-items: center;
+}
+
+.img-descr{
+    width: 30ch;
+    font-size: medium;
+    white-space: nowrap;
+}
 
 .image-bar{
     width: 60vh;
     flex-shrink: 0;
 }
 
-.display_image{
+.display-image{
     height: 75vh;
     object-fit: cover;
     box-shadow: 10px 10px 5px #F9F3EE;
@@ -69,49 +115,15 @@ main{
     font-size: large;
 }
 
-.list-item{
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 9px;
-    margin-right : 6px;
-    border-radius: 5px;
-    padding: 10px;
-    box-shadow: 6px 6px 5px #F9F3EE;
-}
-
-.list-item:hover{
-    background-color: #EFEAD8;
-    cursor: pointer;
-    transition: 0.7s;
-}
-
-.img-descr-container{
-    display: flex;
-    align-items: center;
-}
-
-.img-descr{
-    width: 30ch;
-    font-size: medium;
-    white-space: nowrap;
-}
-
 .highlight{
     background-color: #30C5FF;
 } 
 
-.app-header{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 3rem;
-    font-family: 'Comic Neue', cursive;
-    height: 10vh;
-    text-shadow:darkgrey 2px 3px;
 
-}
-
-.greetings{
+/* 
+    FOOTER SECTION 
+*/
+.app-footer{
     display: flex;
     align-items: center;
 }

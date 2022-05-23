@@ -124,7 +124,7 @@ main{
     display: flex;
     justify-content: center;
     font-size: large;
-    white-space: nowrap;
+    /* white-space: nowrap; */
 }
 
 .highlight{

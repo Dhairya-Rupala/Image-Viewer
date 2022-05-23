@@ -4,23 +4,24 @@
 /* 
     HEADER SECTION 
 */
-*{
+*,
+*::before,
+*::after{
     margin: 0px;
+    box-sizing:border-box;
 }
 
 .app-header{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 3rem;
     font-family: 'Comic Neue', cursive;
-    height: 10vh;
+    height: 120px;
     text-shadow:darkgrey 2px 3px;
 }
 
 .heading{
-    flex-wrap: 1;
-    flex-shrink: 1;
+    font-size: 3rem;
 }
 
 
@@ -28,22 +29,23 @@
 /* 
     MIDDLE SECTION     
 */
-main{
+/* main{
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 4px;
-}
+} */
 
 .container{
     margin-top: 1.5%;
     display: flex;
     justify-content: center;
-    
+    align-items: center;   
 }
 
 .sidebar{
     width: 300px;
+    height: 690px;
 }
 
 .list-item-container{
@@ -85,22 +87,24 @@ main{
 .img-descr-container{
     display: flex;
     align-items: center;
-}
-
-.img-descr{
-    width: 30ch;
-    font-size: medium;
-    white-space: nowrap;
     overflow:hidden;
 }
 
+.img-descr{
+    font-size: medium;
+    white-space: nowrap;
+    
+}
+
 .image-bar{
-    width: 60vh;
+    width: 450px;
+    height: 690px;
     flex-shrink: 0;
 }
 
 .display-image{
-    height: 75vh;
+    height: 600px;
+    width: 450px;
     object-fit: cover;
     box-shadow: 10px 10px 5px #F9F3EE;
 }
@@ -114,18 +118,19 @@ main{
 }
 
 .editable-caption{
-    max-width: 100%;
+    width: 450px;
     margin-top: 12px;
-    object-fit: cover;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
 }
 
 .displayed-caption{
     margin-top: 3px;
-    max-width: 100%;
-    overflow: hidden;
+    width: 100%;
+    font-size: large;
     display: flex;
     justify-content: center;
-    font-size: large;
     white-space: nowrap;
 }
 
@@ -135,19 +140,15 @@ main{
 
 
 /* 
-    FOOTER SECTION 
+    Greet message 
 */
-.app-footer{
-    position: fixed;
-    display: flex;
-    align-items: center;
-}
-
+ 
 .greet-toon{
-    height: 65px;
-    width: 65px;
-    margin-left: 10px;
-    margin-right: 20px;
+    position: relative;
+    left: 10px;
+    bottom: 10px;
+    height: 70px;
+    width: 70px;
     border-radius: 100%;
 }
 
@@ -158,12 +159,96 @@ main{
 }
 
 .greet-message{
-    font-size: x-large;
     visibility: hidden;
+    position: relative;
+    left: 90px;
+    bottom: 30px;
 }
 
 .greet-message-display{
     font-family: 'Special Elite', cursive;
     font-size: x-large;
     visibility: visible;
+    position: relative;
+    left: 50px;
+    bottom: 30px;
+}
+
+
+
+/*
+    RESPONSIVE DESIGN
+*/
+
+@media only screen and (max-width:750px){
+    .heading{
+        font-size: 2.1rem;
+        
+    }
+
+    .container{
+        flex-wrap: wrap;
+    }
+
+
+    .sidebar{
+        width: 450px;
+        height: 450px;
+    }
+
+    .image-bar{
+        width: 450px;
+        justify-self: center;
+    }
+
+    .display-image{
+        width: 450px;
+
+    }
+
+    .greet-toon{
+        height: 45px;
+        width: 45px;
+    }
+
+    .greet-message-display{
+        font-size: medium;
+    }
+
+
+}
+
+
+
+@media only screen and (max-width:600px){
+    .heading{
+        font-size: 1.9rem;
+        
+    }
+
+    .container{
+        flex-wrap: wrap;
+    }
+
+    .sidebar{
+        width: 400px;
+        height: 450px;
+    }
+
+    .image-bar{
+        width: 400px;
+        justify-self: center;
+    }
+
+    .display-image{
+        width: 400px;
+    }
+
+    .greet-toon{
+        height: 35px;
+        width: 35px;
+    }
+    .greet-message-display{
+        font-size: small;
+    }
 }

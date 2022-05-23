@@ -4,9 +4,6 @@
     margin: 0px;
 }
 
-body{
-    background-color: #F9F3EE;
-}
 main{
     display: flex;
     justify-content: center;
@@ -47,7 +44,7 @@ main{
 .display_image{
     height: 75vh;
     object-fit: cover;
-    box-shadow: 10px 10px 5px darkgrey;
+    box-shadow: 10px 10px 5px #F9F3EE;
 }
 
 .displayed-image{
@@ -79,7 +76,7 @@ main{
     margin-right : 6px;
     border-radius: 5px;
     padding: 10px;
-    box-shadow: 6px 6px 5px darkgrey;
+    box-shadow: 6px 6px 5px #F9F3EE;
 }
 
 .list-item:hover{
@@ -110,6 +107,7 @@ main{
     font-size: 3rem;
     font-family: 'Comic Neue', cursive;
     height: 10vh;
+    text-shadow:darkgrey 2px 3px;
 
 }
 
@@ -126,7 +124,7 @@ main{
 
 .greet-toon:hover{
     transform: scale(1.1);
-    box-shadow: 6px 6px 5px darkgrey;
+    box-shadow: 6px 6px 5px #F9F3EE;
 }
 
 

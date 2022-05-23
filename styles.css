@@ -113,12 +113,14 @@ main{
 
 .greetings{
     display: flex;
+    align-items: center;
 }
 
 .greet-toon{
     height: 65px;
     width: 65px;
     margin-left: 10px;
+    margin-right: 20px;
     border-radius: 100%;
 }
 
@@ -127,4 +129,12 @@ main{
     box-shadow: 6px 6px 5px #F9F3EE;
 }
 
+.greet-message{
+    font-size: x-large;
+    visibility: hidden;
+}
 
+.greet-message-display{
+    font-size: x-large;
+    visibility: visible;
+}

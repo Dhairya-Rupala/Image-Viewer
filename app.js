@@ -109,5 +109,13 @@ window.addEventListener("keydown",function(event){
 // Greet Button event handler 
 const greet = document.getElementsByClassName("greet-toon")[0];
 greet.addEventListener("mouseover",function(event){
-    console.log(event);
+    let msg = document.querySelector(".greet-message");
+    msg.classList.remove("greet-message");
+    msg.classList.toggle("greet-message-display");
+}) 
+
+greet.addEventListener("mouseout",function(){
+    let msg = document.querySelector(".greet-message-display");
+    msg.classList.add("greet-message");
+    msg.classList.toggle("greet-message-display");
 })

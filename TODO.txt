@@ -1,0 +1,6 @@
+1) fix arrow key event when focus on input
+2) fix css issues
+3) remove hover class from selected item
+4) remove input box font bold
+5) margin top of heading
+6) body height

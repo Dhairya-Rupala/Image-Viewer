@@ -9,11 +9,10 @@ let current_img = 0;
 let total_images = 0;
 
 // Toggling the highlight class of given id container
-function toggleHighlight(id){
+function toggleHighlight(id) {
   const elmt = document.getElementById(id);
   elmt.classList.toggle("highlight");
 }
-
 
 // Displaying the WebApp heading based on the current time
 (function makeHeading() {
@@ -31,8 +30,7 @@ function toggleHighlight(id){
   appHeading.innerText = heading;
 })();
 
-
-// Calculating the string caption width in pixels 
+// Calculating the string caption width in pixels
 function getTextWidth(text, font) {
   const canvas = document.createElement("canvas");
   const context = canvas.getContext("2d");
@@ -40,7 +38,6 @@ function getTextWidth(text, font) {
   const { width } = context.measureText(text);
   return width;
 }
-
 
 // Handling the dynamic overflow in the caption labels
 function handleOverflow(index, caption) {
@@ -53,27 +50,25 @@ function handleOverflow(index, caption) {
   const font = window.getComputedStyle(curr_box).font;
   let width = getTextWidth(caption, font);
 
-  if(width<=box_width) return caption;
-  let r = caption.length-1;
+  if (width <= box_width) return caption;
+  let r = caption.length - 1;
   let l = 0;
   let mid = 0;
-  while(l<=r){
-    mid = (l+r)/2;
-    const temp = caption.slice(0,mid) + "..." + caption.slice(-mid);
-    width = getTextWidth(temp,font);
-    if(width>box_width){
-      r = mid-1;
-    }
-    else l=mid+1;
+  while (l <= r) {
+    mid = (l + r) / 2;
+    const temp = caption.slice(0, mid) + "..." + caption.slice(-mid);
+    width = getTextWidth(temp, font);
+    if (width > box_width) {
+      r = mid - 1;
+    } else l = mid + 1;
   }
 
-  caption = caption.slice(0,r) + "..." + caption.slice(-r+1);
+  caption = caption.slice(0, r) + "..." + caption.slice(-r + 1);
   return caption;
 }
 
-
 // Creating side bar content for the images data
-function contentMaker(index,img) {
+function contentMaker(index, img) {
   const content = `
         <div class="img-icon-container">
             <img class="img-icon" src=${img.previewImage} alt="Icon can't be loaded">
@@ -84,7 +79,6 @@ function contentMaker(index,img) {
     `;
   return content;
 }
-
 
 // Displaying the current Image in the view bar
 function displayImage() {
@@ -99,21 +93,18 @@ function displayImage() {
 // Display first image on loading
 displayImage();
 
-
 // Loading sidebar image list and adding the event listeners
 images.forEach((img, index) => {
-
   const new_div = document.createElement("div");
   new_div.classList.add("list-item");
   new_div.setAttribute("id", index);
-  const content = contentMaker(index,img);
+  const content = contentMaker(index, img);
   new_div.innerHTML = content;
 
   if (index === 0) {
     new_div.classList.add("highlight");
   }
   new_div.addEventListener("click", function (event) {
-    //TODO: extract function
     toggleHighlight(current_img);
     current_img = +new_div.getAttribute("id");
     toggleHighlight(current_img);
@@ -122,7 +113,6 @@ images.forEach((img, index) => {
   img_list.append(new_div);
   total_images += 1;
 });
-
 
 // Truncating the label string of the sidebar
 images.forEach((img, index) => {
@@ -133,7 +123,6 @@ images.forEach((img, index) => {
     `;
 });
 
-
 // Event Listener for updating the editable caption with side bar content
 disp_caption.addEventListener("input", function (event) {
   let target = document.getElementById(`descr-${current_img}`);
@@ -143,30 +132,25 @@ disp_caption.addEventListener("input", function (event) {
   images[current_img].title = edited_content.innerText;
 });
 
-
-
-// Event Listener for the key presses 
+// Event Listener for the key presses
 window.addEventListener("keydown", function (event) {
-  if(event.key=="ArrowUp"){
-      toggleHighlight(current_img);
-      current_img = (current_img+total_images-1)%total_images;
-      toggleHighlight(current_img);
-  }
-  else if(event.key=="ArrowDown"){
-      toggleHighlight(current_img);
-      current_img = (current_img+1)%total_images;
-      toggleHighlight(current_img);
+  if (event.key == "ArrowUp") {
+    toggleHighlight(current_img);
+    current_img = (current_img + total_images - 1) % total_images;
+    toggleHighlight(current_img);
+  } else if (event.key == "ArrowDown") {
+    toggleHighlight(current_img);
+    current_img = (current_img + 1) % total_images;
+    toggleHighlight(current_img);
   }
   displayImage();
 });
 
-
 // toggling the greet button class
-function toggleGreetMsg(elmt){
+function toggleGreetMsg(elmt) {
   elmt.classList.toggle("greet-message");
   elmt.classList.toggle("greet-message-display");
 }
-
 
 // Greet Button event handler
 greet.addEventListener("mouseover", function (event) {
@@ -179,10 +163,6 @@ greet.addEventListener("mouseout", function () {
   toggleGreetMsg(msg);
 });
 
-
-
-
-//FIXME: add on container
 window.addEventListener("resize", function () {
   images.forEach((img, index) => {
     const curr_descr = document.getElementById(`descr-${index}`);

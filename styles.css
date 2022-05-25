@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue&family=Special+Elite&display=swap');
 
 /*TODO: remove redundant classes, styles*/
+/*TODO: add padding to heading*/
+/*TODO: right padding in list item, image item*/
 
 /* 
     HEADER SECTION 
@@ -36,7 +38,7 @@
 }
 
 .sidebar{
-    width: 300px;
+    width: 450px;
     align-self: flex-start;
     margin-right: 20px;
     /* height: 690px; */
@@ -153,6 +155,7 @@
     cursor: pointer;
 }
 
+/*FIXME:*/
 .greet-message{
     visibility: hidden;
     position: relative;
@@ -184,7 +187,7 @@
         flex-wrap: wrap;
     }
 
-
+/*FIXME:*/
     .sidebar{
         width: 450px;
         height: 450px;

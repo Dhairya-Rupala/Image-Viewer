@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue&family=Special+Elite&display=swap');
 
-/*TODO: remove redundant classes, styles*/
-/*TODO: add padding to heading*/
-/*TODO: right padding in list item, image item*/
 
 /* 
     HEADER SECTION 
@@ -14,7 +11,14 @@
     box-sizing:border-box;
 }
 
+body{
+    height: 100%;
+    position: relative;
+}
+
 .app-header{
+    padding-top: 35px;
+    padding-bottom: 100px;
     text-align: center;
     height: 120px;
     text-shadow:darkgrey 2px 1.5px;
@@ -30,8 +34,7 @@
 */
 
 .container{
-    /*TODO:*/
-    margin-top: 20px;
+    margin-top: 25px;
     display: flex;
     justify-content: center;
     align-items: center;   
@@ -41,7 +44,6 @@
     width: 450px;
     align-self: flex-start;
     margin-right: 20px;
-    /* height: 690px; */
 }
 
 .list-item-container{
@@ -52,6 +54,7 @@
     display: flex;
     border-radius: 4px;
     margin: 10px;
+    max-height: 60px;
     box-shadow: 4px 4px 1px #F9F3EE;
 }
 
@@ -80,13 +83,16 @@
     display: flex;
     align-items: center;
     flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    
 }
 
 .img-descr{
     display: inline-block;
     font-size: 1.2rem;
-    font-weight:500;
-    white-space: nowrap;
+    max-height: 60px;
+    white-space: nowrap !important;
     
 }
 
@@ -106,42 +112,41 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
-    margin-left: 9px;
     border-radius: 10px;
 }
 
 .editable-caption{
     width: 450px;
-    margin-top: 12px;
+    margin-top: 15px;
     overflow: auto;
     display: flex;
     justify-content: center;
 }
 
 .displayed-caption{
-    align-items: center;
-    margin-top: 3px;
+    padding: 0px;
+    margin: 0px;
+    border-width: 0px;
+    font-size: 1.1rem;
+    text-align: center;
     outline: none;
-    min-width: 150px;
-    min-height: 40px;
-    max-height: 90px;
-    font-size: 1.5rem;
-    font-weight: 800;
+    width: 100%;
+    min-height: 10px;
 }
 
+
+
 .highlight{
-    background-color: #30C5FF;
+    background-color: #30C5FF !important;
 } 
 
 
 /* 
     Greet message 
-    FIXME: absolute position
 */
- 
 
 .greet-toon{
-    position: relative;
+    position: absolute;
     left: 10px;
     bottom: 10px;
     height: 70px;
@@ -155,20 +160,17 @@
     cursor: pointer;
 }
 
-/*FIXME:*/
+
 .greet-message{
     visibility: hidden;
-    position: relative;
-    left: 90px;
-    bottom: 30px;
 }
 
 .greet-message-display{
+    visibility: visible;
     font-family: 'Special Elite', cursive;
     font-size: 1.5rem;
-    visibility: visible;
-    position: relative;
-    left: 50px;
+    position: absolute;
+    left: 100px;
     bottom: 30px;
 }
 
@@ -178,7 +180,7 @@
     RESPONSIVE DESIGN
 */
 
-@media only screen and (max-width:750px){
+@media only screen and (max-width:900px){
     .heading{
         font-size: 2.1rem;
     }
@@ -187,12 +189,10 @@
         flex-wrap: wrap;
     }
 
-/*FIXME:*/
     .sidebar{
         width: 450px;
-        height: 450px;
+        margin-bottom: 25px;
     }
-
 
     .img-descr-container{
         width: 395px;
@@ -213,19 +213,16 @@
         width: 450px;
     }
 
-    .displayed-caption{
-        font-size: 1.2rem;
-    }
-
     .greet-toon{
         height: 45px;
         width: 45px;
     }
 
     .greet-message-display{
+        bottom: 12px;
+        left:70px;
         font-size: 1.1rem;
     }
-
 
 }
 
@@ -242,7 +239,6 @@
 
     .sidebar{
         width: 400px;
-        height: 450px;
     }
 
     .image-bar{
@@ -258,15 +254,16 @@
         width: 400px;
     }
 
-    .displayed-caption{
+
+    .greet-toon{
+        height: 30px;
+        width: 30px;
+    }
+
+    .greet-message-display{
+        bottom: 12px;
+        left:50px;
         font-size: 1rem;
     }
 
-    .greet-toon{
-        height: 35px;
-        width: 35px;
-    }
-    .greet-message-display{
-        font-size: 0.9rem;
-    }
 }

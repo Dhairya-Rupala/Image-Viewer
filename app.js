@@ -41,12 +41,11 @@ function getTextWidth(text, font) {
 
 // Handling the dynamic overflow in the caption labels
 function handleOverflow(index, caption) {
+  caption = caption.replace(/\n|\r/g, "");
   let outer_box = document.querySelector(".img-descr-container");
-  const box_width = outer_box.clientWidth;
+  const box_width = Math.floor(outer_box.clientWidth);
 
-  let curr_box = document.getElementById(index.toString());
-  curr_box = curr_box.lastElementChild.lastElementChild;
-
+  let curr_box = document.getElementById(`descr-${index}`);
   const font = window.getComputedStyle(curr_box).font;
   let width = getTextWidth(caption, font);
 
@@ -87,7 +86,7 @@ function displayImage() {
     `;
   const caption = `${images[current_img].title}`;
   img_disp.innerHTML = img_content;
-  disp_caption.innerHTML = caption;
+  disp_caption.value = caption;
 }
 
 // Display first image on loading
@@ -126,19 +125,19 @@ images.forEach((img, index) => {
 // Event Listener for updating the editable caption with side bar content
 disp_caption.addEventListener("input", function (event) {
   let target = document.getElementById(`descr-${current_img}`);
-  target.innerText = handleOverflow(current_img, this.innerText);
+  target.innerText = handleOverflow(current_img, this.value);
 
   const edited_content = document.querySelector(".displayed-caption");
-  images[current_img].title = edited_content.innerText;
-});
+  images[current_img].title = edited_content.value;
+},false);
 
 // Event Listener for the key presses
 window.addEventListener("keydown", function (event) {
-  if (event.key == "ArrowUp") {
+  if (event.key == "ArrowUp" && event.target!=disp_caption) {
     toggleHighlight(current_img);
     current_img = (current_img + total_images - 1) % total_images;
     toggleHighlight(current_img);
-  } else if (event.key == "ArrowDown") {
+  } else if (event.key == "ArrowDown" && event.target!=disp_caption) {
     toggleHighlight(current_img);
     current_img = (current_img + 1) % total_images;
     toggleHighlight(current_img);

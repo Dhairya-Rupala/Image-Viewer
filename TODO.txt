@@ -1,6 +1,6 @@
-1) fix arrow key event when focus on input
-2) fix css issues
+1) fix arrow key event when focus on input - done
+2) fix css issues - resolved
 3) remove hover class from selected item
-4) remove input box font bold
-5) margin top of heading
-6) body height
+4) remove input box font bold - resolved
+5) margin top of heading - resolved
+6) body height - resolved

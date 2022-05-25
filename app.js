@@ -27,12 +27,33 @@ var total_images = 0;
 
 
 
-// Handling the overflow
-function handleOverflow(caption){
-    if(caption.length>30){
-        return caption.substring(0,12) + "..." + caption.substring(caption.length-15);
+// functions for handling the overflow
+function getTextWidth(text,font){
+    const canvas = document.createElement("canvas");
+    const context = canvas.getContext("2d");
+    context.font = font;
+    const {width} = context.measureText(text);
+    return width;
+}
+
+function handleOverflow(index,caption){
+    let outer_box = document.querySelector(".img-descr-container");
+    const box_width = outer_box.clientWidth;
+
+    let curr_box = document.getElementById(index.toString());
+    curr_box = curr_box.lastElementChild.lastElementChild;
+
+    const font = window.getComputedStyle(curr_box).font;
+    let width = getTextWidth(caption,font);
+
+    let mid = caption.length/2;
+    while(width>box_width){
+        caption = caption.slice(0,mid) + "..." + caption.slice(-mid);
+        mid--;
+        width = getTextWidth(caption,font);
     }
     return caption;
+
 }
 
 
@@ -48,7 +69,7 @@ function contentMaker(img){
             <img class="img-icon" src=${img["previewImage"]} alt="Icon can't be loaded">
         </div>
         <div class="img-descr-container">
-            <span class="img-descr">${handleOverflow(img["title"])}</span>
+            <span class="img-descr">${img["title"]}</span>
         </div>
     `;
     return content;
@@ -80,6 +101,7 @@ images.forEach((img,index)=>{
     new_div.setAttribute("id",index.toString());
     const content = contentMaker(img);
     new_div.innerHTML = content;
+
     if(index===0){
         new_div.classList.add("highlight");
     }
@@ -93,13 +115,22 @@ images.forEach((img,index)=>{
     total_images += 1;
 });
 
+images.forEach((img,index)=>{
+    let curr_descr = document.getElementById(index.toString());
+    curr_descr = curr_descr.lastElementChild;
+    const caption = handleOverflow(index,img["title"]);
+    curr_descr.innerHTML = `
+    <span class="img-descr">${caption}</span>
+    `;
+})
+
+
+
 
 // Event Listener for updating the editable caption with side bar content
 disp_caption.addEventListener('input',function(event){
-    let target = document.getElementById(current_img.toString());
-    target = target.querySelector(".img-descr-container .img-descr");
-    // console.log(handleOverflow(this.innerText));
-    target.innerHTML = handleOverflow(this.innerText);
+    let target = document.getElementById(current_img.toString()).lastElementChild;
+    target.innerText = handleOverflow(current_img,this.innerText);
 
     let edited_content = document.getElementsByClassName("displayed-caption")[0];
     images[current_img]["title"] = edited_content.innerText;
@@ -142,4 +173,15 @@ greet.addEventListener("mouseout",function(){
     let msg = document.querySelector(".greet-message-display");
     msg.classList.toggle("greet-message");
     msg.classList.toggle("greet-message-display");
+})
+
+window.addEventListener("resize",function(){
+    images.forEach((img,index)=>{
+        const curr_descr = document.getElementById(index.toString()).lastElementChild;
+        const caption = handleOverflow(index,img["title"]);
+        curr_descr.innerHTML = `
+        <span class="img-descr">${caption}</span>
+        `;
+    
+    })
 })

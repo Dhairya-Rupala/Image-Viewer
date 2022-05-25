@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue&family=Special+Elite&display=swap');
 
+/*TODO: remove redundant classes, styles*/
 
 /* 
     HEADER SECTION 
@@ -29,6 +30,7 @@
 */
 
 .container{
+    /*TODO:*/
     margin-top: 1.5%;
     display: flex;
     justify-content: center;
@@ -36,6 +38,7 @@
 }
 
 .sidebar{
+    /*TODO: height*/
     width: 300px;
     height: 690px;
 }
@@ -46,9 +49,11 @@
 
 .list-item{
     display: flex;
+    /*TODO: remove*/
     justify-content: flex-start;
     border-radius: 5px;
     margin: 10px;
+    /*TODO: fix*/
     box-shadow: 7px 7px 4px #F9F3EE;
 }
 
@@ -56,10 +61,12 @@
     background-color: #EFEAD8;
     cursor: pointer;
     transition: 0.7s;
+    /*TODO: fix*/
     box-shadow: 7px 7px 4px darkgray;
 }
 
 .img-icon-container{
+    /*TODO: fix*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -79,6 +86,7 @@
 .img-descr-container{
     display: flex;
     align-items: center;
+    /*TODO: fix width*/
     width: 230px;
     /* overflow:hidden; */
 }
@@ -139,8 +147,10 @@
 
 /* 
     Greet message 
+    FIXME: absolute position
 */
  
+
 .greet-toon{
     position: relative;
     left: 10px;

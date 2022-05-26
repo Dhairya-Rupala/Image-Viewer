@@ -110,17 +110,16 @@ images.forEach((img, index) => {
     displayImage();
   });
   img_list.append(new_div);
-  total_images += 1;
-});
 
-// Truncating the label string of the sidebar
-images.forEach((img, index) => {
   let curr_descr = document.getElementById(`descr-${index}`);
   const caption = handleOverflow(index, img.title);
   curr_descr.innerHTML = `
     <span class="img-descr" id="descr-${index}">${caption}</span>
     `;
+
+  total_images += 1;
 });
+
 
 // Event Listener for updating the editable caption with side bar content
 disp_caption.addEventListener("input", function (event) {
